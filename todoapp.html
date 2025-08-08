@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="todoapp.css">
+    <script src="/todoapp.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -12,17 +13,40 @@
                 <img class="header__logo" 
                 src="/assets/images/logoLight.svg" alt="">
                 <input type="text" class="header__input">
-                <button class="header__theme-button"><img src="/assets/images/icon-sun.svg" alt=""></button>
+                <button class="header__theme-button inactive-button"><img src="/assets/images/icon-sun.svg" alt=""></button>
         </header>
         <section>
                 <div class="navigation">
                     <h1 class="h1">Extensions List</h1>
                     <div class="nav__buttons">
-                        <button class="button__all">All</button>
-                        <button class="button__active">Active</button>
-                        <button class="button__inactive">Inacive</button>
+                        <button class="button__all active-button nav" data-attribute="All">All</button>
+                        <button class="button__active inactive-button nav" data-attribute="Active">Active</button>
+                        <button class="button__inactive inactive-button nav" data-attribute="Inactive" >Inactive</button>
                     </div>
                 </div>
+
+                <article class="cards">
+
+
+                    <!-- <div class="card"  id="card1">
+                        <div class="card__header">
+                            <img class="card__image" src="/assets/images/logo-devlens.svg" alt="" class="card__icon">
+                            <div class="card__description">
+                                <h2 class="card__title">DevLens</h2>
+                                <p class="card__text">Quickly inspect page layouts and visualize element boundaries</p>
+                            </div>
+                        </div>
+                        <div class="card__footer">
+                            <button class="card__delete-button">Remove</button>
+                            <label class="card__switch">
+                                <input type="checkbox">
+                                <span class="card__slider"></span>
+                            </label>
+                        </div>
+                    </div> -->
+
+                    
+                </article>
         </section>
     </div>
 </body>
