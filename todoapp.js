@@ -4,7 +4,7 @@ const cards = document.querySelectorAll('.card')
 const navigation = document.querySelectorAll(".nav")
 const themeBtn = document.querySelector('.header__theme-button');
 
-const cardArr = [
+let cardArr = [
 {
     title: "DevLens",
     text: "Quickly inspect page layouts and visualize element boundaries",
@@ -97,7 +97,7 @@ function updateCards(){
 
     const cardsFilter = FilterCards(currentFilter)
 
-    cardArr.forEach(card => {
+    cardsFilter.forEach(card => {
         const cardContainer = document.createElement('div');
         cardContainer.classList.add("card")
         
@@ -146,8 +146,9 @@ function updateCards(){
 
 
         const cardInput = document.createElement('input');
+        cardInput.classList.add("card__checkbox")
         cardInput.type = "checkbox";
-        if(card.completed) cardInput.checked
+        cardInput.checked = card.completed
         cardInput.addEventListener("change", () => ToggleCards(card.id))
 
         const cardSlider = document.createElement('span');
@@ -160,17 +161,15 @@ function updateCards(){
     })
 }
 
-
-
-
-
-
-
-
-
-
-
-
+const ToggleCards = (id) =>{
+    cardArr = cardArr.map(card => {
+        if(card.id == id){
+            return {...card, completed: !card.completed}
+        }
+        return card
+    })
+    updateCards()
+} 
 
 navigation.forEach(nav =>{
     nav.addEventListener("click", (e) => {
@@ -179,22 +178,27 @@ navigation.forEach(nav =>{
     })
 })
 
+
 const setActiveFilter = (filter) => {
     currentFilter = filter;
 
     navigation.forEach(nav => {
         if (nav.getAttribute("data-attribute") === filter){
-            nav.classList.add(".active-button")
+            nav.classList.add("active-button")
+            nav.classList.remove("inactive-button")
         }else{
-            nav.classList.remove(".active-button")
+            nav.classList.remove("active-button")
+            nav.classList.add("inactive-button")
         }
     })
+
+    updateCards()
 }
 
 
 const FilterCards = (filter) => {
-        if (filter === "Active") return cardArr.filter(card => !card.completed);
-        if (filter === "Inactive") return cardArr.filter(card => card.completed);
+        if (filter === "Active") return cardArr.filter(card => card.completed);
+        if (filter === "Inactive") return cardArr.filter(card => !card.completed);
         if (filter === "All") return cardArr;
 }
 

@@ -252,14 +252,18 @@ body {
   height: 16px;
   width: 16px;
   left: 2px;
-  bottom: 3px;
+  bottom: 2px;
   background-color: #fff;
   border-radius: 50%;
-  transition: 0.4s;
+  transition: transform 0.3s ease;
 }
 
 input:checked + .card__slider {
   background-color: #ff4d4f;
+}
+
+input:checked + .card__slider::before {
+  transform: translateX(18px);
 }
 
 /*--------------------*/
