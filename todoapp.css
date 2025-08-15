@@ -119,29 +119,35 @@ body {
   color: #ffffff;
 }
 
-.nav__buttons {
-  display: flex;
-  gap: 10px;
+.nav {
+  font-family: "NotoSans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 44px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+  min-width: 70px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  color: #ffffff;
+  background-color: #30354B;
+  border: #53596F solid 1px;
 }
 
 .button__all {
-  font-family: "NotoSans";
-  border-radius: 20px;
-  height: 44px;
-  padding: 10px 18px 10px 18px;
-  font-weight: 400;
+  padding: 0;
 }
 .button__active {
-  font-family: "NotoSans", sans-serif;
-  border-radius: 20px;
-  height: 44px;
-  padding: 10px 20px 10px 20px;
-  font-weight: 600;
+  padding: 10px 30px;
 }
 .button__inactive {
-  font-weight: 400;
-  border-radius: 20px;
-  padding: 10px 20px 10px 20px;
+  padding: 10px 30px;
+}
+
+.nav__buttons {
+  display: flex;
+  gap: 12px;
 }
 
 .inactive-button {
@@ -193,13 +199,6 @@ body {
 .card__title {
   font-size: 20px;
 }
-.card__text {
-  padding-top: 12px;
-  font-weight: 300;
-  color: #b8b8b8;
-  font-size: 16px;
-  line-height: 20px;
-}
 .card__image {
   height: 60px;
   width: 60px;
@@ -221,7 +220,7 @@ body {
   background-color: #F45B56;
   color: #241939;
   border: #ea7b7d solid 1px;
-  transition: 0.2s ease-in-out;
+  transition: 0.35s ease;
 }
 .card__switch {
   position: relative;
@@ -241,7 +240,7 @@ body {
   top: 0;
   left: 0;
   border-radius: 34px;
-  transition: 0.4s;
+  transition: background-color 0.3s ease;
   width: 38px;
   height: 20px;
   background-color: #53576A;
@@ -272,4 +271,84 @@ input:checked + .card__slider::before {
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
   background: rgb(50, 50, 50);
   color: white;
+}
+
+p {
+  padding-top: 12px;
+  font-weight: 300;
+  color: #b8b8b8;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+/*------------------------------------------------------------------*/
+.modalwindow__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(36, 25, 57, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modalwindow__content {
+  background-color: #1F2535;
+  border-radius: 15px;
+  text-align: center;
+  color: #fff;
+  padding: 40px 80px;
+}
+.modalwindow__icon {
+  width: 100px;
+  margin-bottom: 10px;
+}
+.modalwindow__title {
+  font-size: 20px;
+}
+.modalwindow__buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 10px 0;
+  gap: 30px;
+}
+
+.hidden {
+  display: none;
+}
+
+.btn {
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+}
+.btn__close {
+  background-color: #1F2535;
+  color: #525868;
+  border: #525868 2px solid;
+}
+.btn__close:hover {
+  background-color: #525868;
+  color: #1F2535;
+}
+.btn__submit {
+  background-color: #1F2535;
+  color: #f9544e;
+  border: #f9544e 2px solid;
+}
+.btn__submit:hover {
+  background-color: #f9544e;
+  color: #1F2535;
+}
+
+.modalbtn {
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+  font-weight: normal;
 }/*# sourceMappingURL=todoapp.css.map */

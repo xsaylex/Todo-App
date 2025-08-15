@@ -19,9 +19,9 @@
                 <div class="navigation">
                     <h1 class="h1">Extensions List</h1>
                     <div class="nav__buttons">
-                        <button class="button__all active-button nav" data-attribute="All">All</button>
-                        <button class="button__active inactive-button nav" data-attribute="Active">Active</button>
-                        <button class="button__inactive inactive-button nav" data-attribute="Inactive" >Inactive</button>
+                        <button class=" nav button__all active-button " data-attribute="All">All</button>
+                        <button class=" nav button__active inactive-button " data-attribute="Active">Active</button>
+                        <button class=" nav button__inactive inactive-button " data-attribute="Inactive" >Inactive</button>
                     </div>
                 </div>
 
@@ -48,4 +48,17 @@
         </section>
     </div>
 </body>
+
+<div class="modalwindow__container hidden">
+    <div class="modalwindow__content">
+        <img src="/assets/images/trashbin.svg" class="modalwindow__icon" alt="#">
+        <h2 class="modalwindow__title" >Are you sure?</h2>
+        <p class="modalwindow__text">Do you really want to delete this extension?</p>
+        <div class="modalwindow__buttons">
+            <button class="btn__close modalbtn" type="button">Close</button>
+            <button class="btn__submit modalbtn" type="button">Submit</button>
+        </div>
+    </div>
+</div>
+
 </html>

@@ -3,6 +3,9 @@ const line = document.querySelector('.cards');
 const cards = document.querySelectorAll('.card')
 const navigation = document.querySelectorAll(".nav")
 const themeBtn = document.querySelector('.header__theme-button');
+const deleteWindow = document.querySelector(".modalwindow__container")
+const closeBtn = document.querySelector(".btn__close")
+const submitBtn = document.querySelector(".btn__submit")
 
 let cardArr = [
 {
@@ -91,6 +94,18 @@ let cardArr = [
 },
 ]
 let currentFilter = "All"
+let cardToDelete = null
+
+closeBtn.addEventListener("click", () => {
+    if (deleteWindow.classList.contains("hidden") || cardToDelete === null) return;
+    deleteWindow.classList.add("hidden")
+    cardToDelete = null
+});
+submitBtn.addEventListener("click", () => {
+    if (deleteWindow.classList.contains("hidden") || cardToDelete === null) return;
+    deleteCard(cardToDelete)
+    cardToDelete = null
+});
 
 function updateCards(){
     line.innerHTML = "";
@@ -138,6 +153,12 @@ function updateCards(){
         cardDeleteButton.classList.add("card__delete-button")
         cardDeleteButton.textContent = "Remove";
 
+        cardDeleteButton.addEventListener("click", () => {
+            deleteWindow.classList.remove("hidden");
+            cardToDelete = card.id;
+        });
+
+
         const cardLabel = document.createElement('label')
         cardLabel.classList.add("card__switch")
 
@@ -167,9 +188,18 @@ const ToggleCards = (id) =>{
             return {...card, completed: !card.completed}
         }
         return card
-    })
-    updateCards()
+    });
+    console.log(cardArr)
 } 
+
+const deleteCard = (id) => {
+    cardArr = cardArr.filter(card => {
+        if (card.id !== id) return card
+    })
+    deleteWindow.classList.add("hidden")
+    console.log(cardArr)
+    updateCards()
+}
 
 navigation.forEach(nav =>{
     nav.addEventListener("click", (e) => {
@@ -177,7 +207,6 @@ navigation.forEach(nav =>{
         updateCards()
     })
 })
-
 
 const setActiveFilter = (filter) => {
     currentFilter = filter;
@@ -195,14 +224,32 @@ const setActiveFilter = (filter) => {
     updateCards()
 }
 
-
 const FilterCards = (filter) => {
         if (filter === "Active") return cardArr.filter(card => card.completed);
         if (filter === "Inactive") return cardArr.filter(card => !card.completed);
         if (filter === "All") return cardArr;
 }
 
-updateCards()
 
 
+window.addEventListener("DOMContentLoaded", () => {
+    updateCards()
+})
 
+document.addEventListener("keydown", (e) =>{
+    if (e.key == "Escape" && !deleteWindow.classList.contains("hidden")){
+        deleteWindow.classList.add("hidden");
+        cardToDelete = null;
+    }
+})
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !deleteWindow.classList.contains("hidden") && cardToDelete !== null) {
+        deleteCard(cardToDelete);
+        cardToDelete = null;
+    }
+    else{
+        e.preventDefault();
+        e.stopPropagation();
+    }
+});
